@@ -59,7 +59,7 @@ todoApp.controller("ConfigController", function($scope, $ionicPlatform, $ionicLo
                 $ionicLoading.hide();
             }, function(error) {
                 console.error("There was an error copying the database: " + error);
-                db = $cordovaSQLite.openDB("populated.db");
+                db = $cordovaSQLite.openDB("populated.db",0);
                 $location.path("/categories");
                 $ionicLoading.hide();
             });
