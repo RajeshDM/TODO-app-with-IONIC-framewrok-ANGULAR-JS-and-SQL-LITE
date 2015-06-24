@@ -53,8 +53,8 @@ todoApp.controller("ConfigController", function($scope, $ionicPlatform, $ionicLo
     $ionicPlatform.ready(function() {
         $ionicLoading.show({ template: 'Loading...' });
         if(window.cordova) {
-            window.plugins.sqlDB.copy("populated.db", function() {
-                db = $cordovaSQLite.openDB("populated.db");
+            window.plugins.sqlDB.copy("populated.db", 0, function() {
+                db = $cordovaSQLite.openDB("populated.db" , 0 );
                 $location.path("/categories");
                 $ionicLoading.hide();
             }, function(error) {
