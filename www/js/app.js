@@ -84,19 +84,6 @@ todoApp.controller("ConfigController", function($scope, $ionicPlatform, $ionicLo
 todoApp.controller("CategoriesController", function($scope, $ionicPlatform, $cordovaSQLite) {
  
     $scope.categories = [];
-	
-	db = openDatabase("websql.db", '1.0', "My WebSQL Database", 2 * 1024 * 1024);
-            db.transaction(function (tx) {
-                tx.executeSql("DROP TABLE IF EXISTS tblCategories");
-                //tx.executeSql("DROP TABLE IF EXISTS tblTodoLists");
-                //tx.executeSql("DROP TABLE IF EXISTS tblTodoListItems");
-                tx.executeSql("CREATE TABLE IF NOT EXISTS tblCategories (id integer primary key, category_name text)");
-                tx.executeSql("CREATE TABLE IF NOT EXISTS tblTodoLists (id integer primary key, category_id integer, todo_list_name text)");
-                tx.executeSql("CREATE TABLE IF NOT EXISTS tblTodoListItems (id integer primary key, todo_list_id integer, todo_list_item_name text)");
-                tx.executeSql("INSERT INTO tblCategories (category_name) VALUES (?)", ["Shopping"]);
-                tx.executeSql("INSERT INTO tblCategories (category_name) VALUES (?)", ["Chores"]);
-                tx.executeSql("INSERT INTO tblCategories (category_name) VALUES (?)", ["School"]);
-			});
 
     $ionicPlatform.ready(function() {
         var query = "SELECT id, category_name FROM tblCategories";
